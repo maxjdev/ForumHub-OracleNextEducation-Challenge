@@ -15,15 +15,6 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    @Transactional
-    public UsuarioResponse cadastrarUsuario(UsuarioRequest usuarioRequest) {
-        if (usuarioRepository.existsByEmail(usuarioRequest.email()))
-            throw new IllegalArgumentException("Email já cadastrado");
-
-        var usuario = usuarioRequest.toModel(usuarioRequest);
-        return new UsuarioResponse(usuarioRepository.save(usuario));
-    }
-
     @Transactional(readOnly = true)
     public UsuarioResponse buscarUsuarioPorId(Long id) {
         var usuario = buscaUsuarioPorIdOuLancaExcecao(id);

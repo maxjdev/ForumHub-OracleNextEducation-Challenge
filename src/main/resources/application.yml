@@ -27,3 +27,12 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+api:
+  server:
+    url:
+      dev: http://localhost:8080
+      prod: http://localhost:8080
+  security:
+    token:
+      secret: ${JWT_SECRET:secret}
